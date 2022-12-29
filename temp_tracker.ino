@@ -22,19 +22,15 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Temperature Monitor Running...");
 
-  if (!aht.begin()) {  // Redundant
-    while (!aht.begin()) {
-      Serial.println("Could not find AHT20.");
-      delay(500);
-    }
+  while (!aht.begin()) {
+    Serial.println("Could not find AHT20.");
+    delay(500);
   }
   Serial.println("AHT20 found");
 
-  if (!SD.begin(chipSelect)) {  // Redundant
-    while (!SD.begin(chipSelect)) {
-      Serial.println("SD card failed");
-      delay(1000);
-    }
+  while (!SD.begin(chipSelect)) {
+    Serial.println("SD card failed");
+    delay(1000);
   }
   Serial.println("SD card initialized.");
 }
